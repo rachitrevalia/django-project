@@ -1,0 +1,40 @@
+{% extends 'index.html' %}
+{% load static %}
+{% block title %} Info - {% endblock title %}
+{% block home_link %}
+          <a class="navbar-brand" href="#">Task Manager</a>
+          <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+            {% endblock  %}
+{% block nav_links %}
+    
+{% endblock  %}
+{% block navbar_buttons %}
+<a class="btn btn-outline-success ms-2" type="button" href="{% url 'dashboard' %}">GO BACK</a>
+<a class="btn btn-outline-danger ms-2" type="button" href="{% url 'logout' %}">LOGOUT</a>
+{% endblock %}
+
+{% block content %}
+<h3 style="text-align: center;">Task Manager Dashboard Information</h3>
+<hr>
+<div class="container">
+    <h5>Welcome to the Task Manager Dashboard!</h5>
+    <p>This dashboard is designed to help you manage your tasks efficiently. Below you will find information on how to navigate and use the features of this application.</p>
+
+    <h5>Features:</h5>
+    <ul>
+        <li><strong>Create Task:</strong> Click on the "CREATE TASK" button to add a new task. You will be prompted to enter the task title, content, and deadline.</li>
+        <li><strong>Task Assigner:</strong> Use the "TASK ASSIGNER" button to assign tasks to other users. You can select users from the list and assign them specific tasks.</li>
+        <li><strong>View Tasks:</strong> Your tasks will be displayed in a grid format on the dashboard. Each task card shows the title, content, and deadline. You can update or delete tasks using the buttons on each card.</li>
+        <li><strong>Logout:</strong> Click the "LOGOUT" button to securely log out of your account.</li>
+    </ul>
+
+    <h5>How to Use:</h5>
+    <ol>
+        <li><strong>Log in:</strong> Access the dashboard after logging in with your username and password.</li>
+        <li><strong>Create a New Task:</strong> Click the "CREATE TASK" button and fill in the required fields. Save your task to see it on your dashboard.</li>
+        <li><strong>Assign Tasks:</strong> To assign tasks to other users, click on the "TASK ASSIGNER" button. Select the task and the user you want to assign it to.</li>
+        <li><strong>Manage Your Tasks:</strong> View your tasks on the dashboard. Click "Update Task" to edit details or "Delete Task" to remove it.</li>
+        <li><strong>Log Out:</strong> When you're done, remember to log out by clicking the "LOGOUT" button.</li>
+    </ol>
+</div>
+{% endblock %}

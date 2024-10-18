@@ -1,0 +1,49 @@
+{% extends 'index.html' %}
+{% load static %}
+{% block title %} Dashboard -  {% endblock title %}
+{% block home_link %}
+          <a class="navbar-brand" href="#">Task Manager</a>
+          <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+{% endblock  %}
+{% block nav_links %}
+    <li class="nav-item">
+        <a class="active btn btn-outline-info ms-2" href="{% url 'info1' %}">Info</a>
+    </li>
+{% endblock %}
+{% block search_bar %}
+<form class="d-flex" role="search" method="GET" action="{% url 'task-search' %}">
+  <input class="form-control me-2" type="search" name="q" placeholder="" aria-label="Search" />
+  <button class="btn btn-outline-primary" type="submit">Search</button>
+</form>
+{% endblock  %}
+{% block navbar_buttons %}
+<a class="btn btn-outline-success ms-2" type="button" href="{% url 'create-task' %}">CREATE TASK</a>
+<a class="btn btn-outline-success ms-2" type="button" href="{% url 'assign-dashboard' %}">TASK ASSIGNER</a>
+<a class="btn btn-outline-danger ms-2" type="button" href="{% url 'logout' %}">LOGOUT</a>
+{% endblock %}
+
+{% block content %}
+<h3 style="text-align: center;">Welcome, {{ username }} To Your Task Manager Dashboard!</h3>
+<hr>
+
+<!-- Task Grid Container -->
+<div class="container">
+  <div class="row">
+    {% for tsk in task %}
+      <div class="col-lg-4 col-md-6 col-sm-12 mb-4">
+        <div class="card h-100 shadow-md p-3">
+          <div class="card-body">
+            <h3 class="card-title">{{ tsk.title }}</h3>
+            <p class="card-text">{{ tsk.content }}</p>
+            <p><strong>Deadline:</strong> {{ tsk.deadline }}</p>
+            <div class="d-flex justify-content-end mt-3">
+              <a href="{% url 'update-task' tsk.id %}" class="btn btn-warning me-2">Update Task</a>
+              <a href="{% url 'delete-task' tsk.id %}" class="btn btn-danger">Delete Task</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    {% endfor %}
+  </div>
+</div>
+{% endblock %}

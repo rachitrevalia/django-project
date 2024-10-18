@@ -1,0 +1,75 @@
+{% extends 'index.html' %}
+{% load static %}
+{% block title %} Assignment Dashboard - {% endblock title %}
+{% block home_link %}
+          <a class="navbar-brand" href="#">Task Manager</a>
+          <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+{% endblock  %}
+{% block nav_links %}
+    <li class="nav-item">
+        <a class="active btn btn-outline-info ms-2" href="{% url 'info2' %}">Info</a>
+    </li>
+{% endblock %}
+{% block navbar_buttons %}
+<a class="btn btn-outline-success ms-2" type="button" href="{% url 'assign-task' %}">ASSIGN TASK</a>
+<a class="btn btn-outline-success ms-2" type="button" href="{% url 'dashboard' %}">PERSONAL DASHBOARD</a>
+<a class="btn btn-outline-danger ms-2" type="button" href="{% url 'logout' %}">LOGOUT</a>
+{% endblock %}
+
+{% block content %}
+<h3 style="text-align: center;">Welcome, {{ request.user.username }} to Your Task Assigner Dashboard!</h3>
+<hr>
+
+<!-- Tasks Assigned by You -->
+<div class="container">
+    <h4>Tasks Assigned by You</h4>
+    {% if assigned_task %}
+    <div class="row">
+        {% for task in assigned_task%}
+            <div class="col-lg-4 col-md-6 col-sm-12 mb-4">
+                <div class="card h-100 shadow-md p-3">
+                    <div class="card-body">
+                        <h5 class="card-title">{{ task.title }}</h5>
+                        <p class="card-text">{{ task.content }}</p>
+                        <p><strong>Assigned to:</strong> {{ task.assigned_to.username }}</p>
+                        <p><strong>Deadline:</strong> {{ task.deadline }}</p>
+                        <div class="d-flex justify-content-end mt-3">
+                            <a href="{% url 'update-assigned-task' task.id %}" class="btn btn-warning me-2">Update Assigned Task</a>
+                            <a href="{% url 'delete-assigned-task' task.id %}" class="btn btn-danger">Delete Assigned Task</a>
+                          </div>
+                    </div>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+    {% else %}
+    <p>No tasks assigned by you.</p>
+    {% endif %}
+</div>
+
+<!-- Tasks Assigned to You -->
+<div class="container mt-5">
+    <h4>Tasks Assigned to You</h4>
+    {% if task_assigned_to_me %}
+    <div class="row">
+        {% for task in task_assigned_to_me %}
+            <div class="col-lg-4 col-md-6 col-sm-12 mb-4">
+                <div class="card h-100 shadow-md p-3">
+                    <div class="card-body">
+                        <h5 class="card-title">{{ task.title }}</h5>
+                        <p class="card-text">{{ task.content }}</p>
+                        <p><strong>Assigned by:</strong> {{ task.assigned_by.username }}</p>
+                        <p><strong>Deadline:</strong> {{ task.deadline }}</p>
+                        <div class="d-flex justify-content-end mt-3">
+                            <a href="{% url 'completed-task' task.id %}" class="btn btn-success">Completed Assigned Task</a>
+                          </div>
+                    </div>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+    {% else %}
+    <p>No tasks assigned to you.</p>
+    {% endif %}
+</div>
+{% endblock %}

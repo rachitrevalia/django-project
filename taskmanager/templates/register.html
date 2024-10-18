@@ -1,0 +1,30 @@
+{% load static %}
+{% load crispy_forms_tags %}
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width-device-width, initial-scale=1, maximum-scale=1" />
+    <link rel="stylesheet" type="text/css" href="https://bootswatch.com/5/sketchy/bootstrap.css" />
+    <link rel="stylesheet" type="text/css" href="{% static 'css/styles.css' %}" />
+    <title>Task Manager - Registration</title>
+  </head>
+  <br>
+  <div class="container bg-white shadow-md p-5 form-layout">
+    <h2>This is our registration page</h2>
+    <hr>
+    <br>
+    <form method="POST" autocomplete="off">
+      {% csrf_token %}
+      {{form.username|as_crispy_field}}
+      <br>
+      {{form.email|as_crispy_field}}
+      <br>
+      {{form.password1|as_crispy_field}}
+      <br>
+      {{form.password2|as_crispy_field}}
+      <br>
+      <a href="/" class="btn btn-warning me-2">GO BACK</a>
+      <input class="btn btn-outline-success ms-2" type="submit" value="Submit" />
+    </form>
+  </div>
+</html>

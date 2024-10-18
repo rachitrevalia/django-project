@@ -1,0 +1,32 @@
+# Python files
+*.pyc
+__pycache__/
+
+# Virtual environment
+venv/
+
+# Django database
+*.sqlite3
+db.sqlite3
+
+# Log files
+*.log
+
+# Environment variables
+.env
+
+# Media files
+media/
+staticfiles/
+
+# macOS files
+*.DS_Store
+
+# Ignore compiled Python files
+*.pyo
+*.pyd
+
+# Ignore distribution files
+*.egg-info/
+dist/
+build/

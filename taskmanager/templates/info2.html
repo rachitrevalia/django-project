@@ -1,0 +1,39 @@
+{% extends 'index.html' %}
+{% load static %}
+{% block title %} Info - Assignment Dashboard | {% endblock title %}
+{% block home_link %}
+          <a class="navbar-brand" href="#">Task Manager</a>
+          <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+{% endblock  %}
+{% block nav_links %}
+{% endblock  %}
+{% block navbar_buttons %}
+<a class="btn btn-outline-success ms-2" type="button" href="{% url 'assign-dashboard' %}">GO BACK</a>
+<a class="btn btn-outline-danger ms-2" type="button" href="{% url 'logout' %}">LOGOUT</a>
+{% endblock %}
+
+{% block content %}
+<h3 style="text-align: center;">Task Assigner Dashboard Information</h3>
+<hr>
+<div class="container">
+    <h5>Welcome to the Task Assigner Dashboard!</h5>
+    <p>This dashboard allows you to manage tasks effectively by providing an overview of tasks assigned by you and tasks assigned to you.</p>
+
+    <h5>Features:</h5>
+    <ul>
+        <li><strong>Assign Task:</strong> Click on the "ASSIGN TASK" button to assign tasks to other users. You will enter task details and select the user to assign it to.</li>
+        <li><strong>View Tasks Assigned by You:</strong> This section displays all tasks you have assigned to others, including their titles, content, assigned users, and deadlines. You can update or delete these tasks.</li>
+        <li><strong>View Tasks Assigned to You:</strong> This section shows tasks assigned to you by others. You can see task details and mark tasks as completed.</li>
+        <li><strong>Logout:</strong> Always remember to log out of your account by clicking the "LOGOUT" button.</li>
+    </ul>
+
+    <h5>How to Use:</h5>
+    <ol>
+        <li><strong>Log in:</strong> Access the dashboard after logging in with your username and password.</li>
+        <li><strong>Assign a New Task:</strong> Click the "ASSIGN TASK" button and fill in the task details, including the user to whom you're assigning the task.</li>
+        <li><strong>Manage Assigned Tasks:</strong> Under the "Tasks Assigned by You" section, view, update, or delete tasks that you have assigned. Use the provided buttons to perform these actions.</li>
+        <li><strong>Track Tasks Assigned to You:</strong> In the "Tasks Assigned to You" section, view tasks assigned to you. Click "Completed Assigned Task" to mark tasks as complete.</li>
+        <li><strong>Log Out:</strong> When you're finished, click the "LOGOUT" button to securely exit your account.</li>
+    </ol>
+</div>
+{% endblock %}

@@ -1,0 +1,24 @@
+{% extends 'index.html' %}
+
+
+{% block content %}
+<div class="container mt-5">
+    <h2>Submit Feedback</h2>
+    <hr>
+
+    {% if messages %}
+    <div class="alert alert-success alert-dismissible fade show" role="alert">
+        {% for message in messages %}
+            {{ message }}
+        {% endfor %}
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
+    {% endif %}
+
+    <form method="POST" autocomplete="off">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button class="btn btn-primary" type="submit">Submit Feedback</button>
+    </form>
+</div>
+{% endblock %}

@@ -1,0 +1,19 @@
+{% extends 'index.html' %}
+{% block title %} Assign Task - {% endblock title %}
+{% block navbar_buttons %}
+<a class="btn btn-outline-success ms-2" type="button" href="{% url 'assign-dashboard' %}">GO BACK</a>
+<a class="btn btn-outline-danger ms-2" type="button" href="{% url 'logout' %}">LOGOUT</a>
+{% endblock %}
+
+{% block content %}
+<h3 style="text-align: center;">Assign Task</h3>
+<hr>
+<div class="container bg-white shadow-md p-5 form-layout">
+    <form method="POST" autocomplete="off">
+      {% csrf_token %}
+      {{ form.as_p }} 
+      <a href="{% url 'assign-dashboard' %}" class="btn btn-warning me-2">GO BACK</a>
+      <input class="btn btn-outline-success ms-2" type="submit" value="Assign Task" />
+    </form>
+</div>
+{% endblock %}

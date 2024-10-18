@@ -1,0 +1,130 @@
+{% load static %}
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>{% block title %} {% endblock title %} Task Manager</title>
+    <link rel="stylesheet" type="text/css" href="https://bootswatch.com/5/sketchy/bootstrap.css">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/styles.css' %}"> 
+  </head>
+  <body>
+    <nav class="navbar navbar-expand-lg bg-body-tertiary my-2">
+      <div class="container-fluid">
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarTogglerDemo01" aria-controls="navbarTogglerDemo01" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarTogglerDemo01">
+          {% block home_link %}
+          <a class="navbar-brand" href="/">Task Manager</a>
+          <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+            <li class="nav-item">
+              <a class=" active btn btn-outline-info ms-2" aria-current="page" href="/">Home</a>
+            </li>
+            {% endblock  %}
+            {% block nav_links %}
+                  <li class="nav-item">
+                    <a class=" active btn btn-outline-info ms-2" aria-current="page" href="{% url 'about' %}">About</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="active btn btn-outline-info ms-2" href="{% url 'submit-feedback' %}">Give Feedback</a>
+                </li>
+            {% endblock %}
+            <li class="nav-item dropdown">
+              <a class="btn btn-outline-info ms-2  dropdown-toggle" type="button" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                Contact Me
+              </a>
+              <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                <li><a class="dropdown-item" href="https://www.instagram.com/rachit_revalia17" target="_blank">Instagram</a></li>
+                <li><a class="dropdown-item" href="https://www.linkedin.com/in/rachitrevalia" target="_blank">LinkedIn</a></li>
+                <li><a class="dropdown-item" href="https://github.com/rachitrevalia" target="_blank">GitHub</a></li>
+                <li><a class="dropdown-item" href="mailto:rachit.revalia@gmail.com">Email</a></li>
+              </ul>
+            </li>
+          </ul>
+          {% block search_bar  %}
+            
+          {% endblock  %}
+          {% block navbar_buttons %}
+          <a class="btn btn-outline-primary ms-2" type="button" href="{% url 'register' %}">REGISTER</a>
+          <a class="btn btn-outline-primary ms-2" type="button" href="{% url 'my-login' %}">LOGIN</a>
+          {% endblock %}
+        </div>
+      </div>
+    </nav>
+
+    {% block content %}
+    <div class="container mt-5 text-center">
+      <div class="jumbotron">
+        <h1 class="display-4">Welcome to Task Manager!</h1>
+        <p class="lead">Manage your tasks easily, stay organized, and get things done.</p>
+        <hr class="my-4">
+        <p>Sign up to start managing your tasks efficiently or log in to access your dashboard.</p>
+        <a class="btn btn-primary btn-lg" href="{% url 'register' %}" role="button">Get Started</a>
+      </div>
+    </div>
+
+    <div class="container mt-5">
+      <h2 class="text-center mb-4">Features</h2>
+      <div class="row">
+        <div class="col-md-4">
+          <div class="card">
+            <div class="card-body">
+              <h5 class="card-title">Task Creation</h5>
+              <p class="card-text">Create, update, and delete tasks with a simple and intuitive interface.</p>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="card">
+            <div class="card-body">
+              <h5 class="card-title">Task Assignment</h5>
+              <p class="card-text">Assign tasks to other users and track their progress easily.</p>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="card">
+            <div class="card-body">
+              <h5 class="card-title">Personal Dashboard</h5>
+              <p class="card-text">View all your tasks in a neat and organized dashboard.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="container text-center mt-5">
+      <h2>Ready to boost your productivity?</h2>
+      <a class="btn btn-success btn-lg" href="{% url 'register' %}">Sign Up Now</a>
+      <p class="mt-3">Already have an account? <a href="{% url 'my-login' %}">Log in here</a>.</p>
+    </div>
+
+    <div class="container mt-5">
+      <h2 class="text-center mb-4">What Our Users Say</h2>
+      <div class="row">
+        <div class="col-md-4">
+          <blockquote class="blockquote">
+            <p class="mb-0">This app has changed the way I manage my tasks! Highly recommend it.</p>
+            <footer class="blockquote-footer">User A</footer>
+          </blockquote>
+        </div>
+        <div class="col-md-4">
+          <blockquote class="blockquote">
+            <p class="mb-0">The best task management tool I've ever used!</p>
+            <footer class="blockquote-footer">User B</footer>
+          </blockquote>
+        </div>
+        <div class="col-md-4">
+          <blockquote class="blockquote">
+            <p class="mb-0">Easy to use, visually appealing, and super efficient!</p>
+            <footer class="blockquote-footer">User C</footer>
+          </blockquote>
+        </div>
+      </div>
+    </div>
+    {% endblock %}
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.min.js"></script>
+  </body>
+</html>

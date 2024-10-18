@@ -1,0 +1,18 @@
+{% extends 'index.html' %}
+{% block title %} LOG OUT - {% endblock title %}
+{% block navbar_buttons %}
+<a class="btn btn-outline-success ms-2" type="button" href="{% url 'assign-dashboard' %}">GO BACK</a>
+{% endblock %}
+
+{% block content %}
+<br>
+<div class="container bg-white shadow-md p-5 form-layout">
+  <h2>LOGOUT</h2>
+  <hr>
+  <br>
+      <p>DO YOU WANT TO LOGOUT!</p>
+      <br>
+      <a href="{% url 'dashboard' %}" class="btn btn-outline-success me-2">NO</a>
+      <a href="{% url 'user-logout' %}" class="btn btn-danger me-2">YES</a>
+</div>
+{% endblock %}

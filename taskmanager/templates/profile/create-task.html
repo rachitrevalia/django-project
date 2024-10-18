@@ -1,0 +1,26 @@
+{% extends 'index.html' %}
+{% load crispy_forms_tags %}
+{% block title %} Create Task - {% endblock title %}
+{% block navbar_buttons %}
+<a class="btn btn-outline-success ms-2" type="button" href="{% url 'dashboard' %}">GO BACK</a>
+<a class="btn btn-outline-danger ms-2" type="button" href="{% url 'logout' %}">LOGOUT</a>
+{% endblock %}
+
+{% block content %}
+<div class="container bg-white shadow-md p-5 form-layout">
+  <h2>CREATE A TASK</h2>
+  <hr>
+  <br>
+  <form method="POST" autocomplete="off">
+    {% csrf_token %}
+    {{ form.title|as_crispy_field }}
+    <br>
+    {{ form.content|as_crispy_field }}
+    <br>
+    {{ form.deadline|as_crispy_field }} 
+    <br>
+    <a href="{% url 'dashboard' %}" class="btn btn-warning me-2">GO BACK</a>
+    <input class="btn btn-outline-info ms-2" type="submit" value="Submit" />
+  </form>
+</div>
+{% endblock %}
